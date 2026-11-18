@@ -415,6 +415,9 @@
       /* ============ State ============ */
       var state = "menu"; // menu | playing | paused | over
       var score = 0, best = 0, level = 1, lives = 3;
+      // The best score survives a reload: it lives in localStorage, so a
+      // returning player still chases their own record.
+      try { best = parseInt(localStorage.getItem("miner-rush-best") || "0", 10) || 0; } catch (e) { best = 0; }
       var combo = 0, caught = 0, elapsed = 0;
       var items = [], particles = [], floaters = [];
       var spawnT = 0, shake = 0, flash = 0, time = 0;
@@ -535,7 +538,10 @@
       function gameOver() {
         state = "over";
         var isRecord = score > best;
-        if (isRecord) best = score;
+        if (isRecord) {
+          best = score;
+          try { localStorage.setItem("miner-rush-best", String(best)); } catch (e) { /* storage unavailable: best still shows this session */ }
+        }
         el("finalScore").textContent = score;
         el("finalLevel").textContent = level;
         el("finalCaught").textContent = caught;
@@ -974,6 +980,8 @@
         } else if (e.key === "p" || e.key === "P") {
           if (state === "playing") pauseGame();
           else if (state === "paused") resumeGame();
+        } else if (e.key === "m" || e.key === "M") {
+          toggleSound();
         } else if (e.key === " " || e.key === "Enter") {
           if (state === "menu") { startGame(); e.preventDefault(); }
           else if (state === "over") { startGame(); e.preventDefault(); }
@@ -1014,12 +1022,14 @@
         if (state === "playing") pauseGame();
         else if (state === "paused") resumeGame();
       });
-      el("btnSound").addEventListener("click", function () {
+      function toggleSound() {
         soundOn = !soundOn;
-        this.textContent = soundOn ? "Suara: Nyala" : "Suara: Mati";
-        this.setAttribute("aria-pressed", soundOn ? "true" : "false");
+        var btn = el("btnSound");
+        btn.textContent = soundOn ? "Suara: Nyala" : "Suara: Mati";
+        btn.setAttribute("aria-pressed", soundOn ? "true" : "false");
         if (soundOn) ensureAudio();
-      });
+      }
+      el("btnSound").addEventListener("click", toggleSound);
 
       showOverlay("menu");
       renderHUD();
