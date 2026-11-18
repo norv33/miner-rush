@@ -9,7 +9,8 @@ bounty ([best-game-01](https://make.fun/bounty/best-game-01)). Drive a mine cart
 treasure falling from above — gold (+10), gems (+25), diamonds (+50) —
 while dodging rocks and bombs. You have 3 lives; a rare lantern restores
 one. Score builds a combo multiplier up to ×5, and you level up every
-400 points.
+400 points. Your best score is saved in the browser, so it is still
+there when you come back to beat it.
 
 ## How to play
 
@@ -26,10 +27,10 @@ one. Score builds a combo multiplier up to ×5, and you level up every
   and play.
 - `screenshots/` — 4 real screenshots of the game rendering in a
   browser: start screen, gameplay, pause, game over. The first by name is the cover.
-- `main.ts` — Node 22, standard library only. Hands the entry in: copies
-  `game/` and `screenshots/` to `/output` and writes
-  `/output/dossier.json` with `buildDossier` from
-  `vendor/makefun-game.ts`.
+- `main.ts` — Node 22, standard library only. Hands the entry in: checks
+  that `game/index.html` and `screenshots/` exist, copies `game/` and
+  `screenshots/` to `/output`, and writes `/output/dossier.json` with
+  `buildDossier` from `vendor/makefun-game.ts`.
 - `vendor/makefun-game.ts` — the kit's copy, unchanged.
 - `serve.ts` — tiny static server for local testing (kit starter).
 - `LICENSE` — MIT.
