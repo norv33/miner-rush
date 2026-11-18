@@ -1,7 +1,11 @@
 # Miner Rush
 
+[![make.fun](https://make.fun/badge/best-game-01.svg)](https://make.fun/bounty/best-game-01)
+[![rank](https://make.fun/badge/best-game-01/norv33/miner-rush/rank.svg)](https://make.fun/bounty/best-game-01)
+[![reward](https://make.fun/badge/best-game-01/norv33/miner-rush/reward.svg)](https://make.fun/bounty/best-game-01)
+
 An original arcade mining game for the make.fun **"Make the best game"**
-bounty (`best-game-01`). Drive a mine cart along the track and catch the
+bounty ([best-game-01](https://make.fun/bounty/best-game-01)). Drive a mine cart along the track and catch the
 treasure falling from above — gold (+10), gems (+25), diamonds (+50) —
 while dodging rocks and bombs. You have 3 lives; a rare lantern restores
 one. Score builds a combo multiplier up to ×5, and you level up every
@@ -49,4 +53,4 @@ ls -R out1   # game/ + screenshots/ + dossier.json
 Public GitHub repository, created on or after the competition opened
 (16 Nov 2026), with this content at the submitted commit. Deadline:
 **Wed 19 Nov 2026, 01:00 WIB**. Submit via make.fun ("Submit an
-entry" on the bounty page) with the AI transcripts that built it.
+entry" on the [bounty page](https://make.fun/bounty/best-game-01)) with the AI transcripts that built it.
